@@ -20,6 +20,6 @@ Este proyecto consiste en un cuadro de mando analítico desarrollado en **Power 
 * **Tendencias Temporales:** Análisis de la apertura y cierre de tickets a lo largo del tiempo.
 
 ## 🛠️ Instrucciones de Instalación y Uso
-1. **Clonar el repositorio:**
+1. Clonar el repositorio:
    ```bash
    git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/tu-usuario/nombre-del-repositorio.git)
