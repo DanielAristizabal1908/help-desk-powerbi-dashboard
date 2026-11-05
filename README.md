@@ -1,59 +1,26 @@
-# 📊 IT Help Desk Analytics: Monitoreo de MTTR y SLA
+Help Desk & IT Support Analytics Dashboard
+📊 Descripción del Proyecto
+Este proyecto consiste en un cuadro de mando analítico desarrollado en Power BI Desktop diseñado para optimizar la gestión de operaciones de soporte técnico (Help Desk). El objetivo principal es proporcionar a los líderes de operaciones y tomadores de decisiones una visibilidad clara y en tiempo real sobre el volumen de tickets, los tiempos de resolución y el cumplimiento de los acuerdos de nivel de servicio (SLA).
 
-## 📝 Resumen del Proyecto
+🚀 Características Principales
+Métricas Clave de Rendimiento (KPIs): Conteo total de tickets, tiempo medio de resolución (MTTR), tasa de resolución en el primer contacto (FCR) y porcentaje de cumplimiento de SLA.
 
-Este proyecto simula el entorno de datos de un departamento de soporte técnico (Help Desk). El objetivo principal es proporcionar a los líderes operativos un panel de control interactivo para monitorear el rendimiento de los agentes, identificar cuellos de botella en la resolución de problemas y medir el cumplimiento de los Acuerdos de Nivel de Servicio (SLA).
+Análisis por Agente y Categoría: Visuales interactivos para evaluar el desempeño individual del equipo de soporte y las categorías de fallas más recurrentes.
 
-El dashboard reveló de forma crítica que el equipo actual de soporte (Ana, Luis y Carlos) opera con un cumplimiento de SLA de entre 50% y 74%, muy por debajo del objetivo corporativo del 90%, lo que sugiere la necesidad de una auditoría de procesos en la asignación de tickets críticos.
+Diseño Ejecutivo y Experiencia de Usuario (UX): Uso de Tooltips interactivos personalizados y tarjetas limpias para mantener una interfaz minimalista, moderna y libre de elementos visuales redundantes.
 
-## 🛠️ Stack Tecnológico
+Modelado de Datos: Estructura optimizada con tablas de calendario y relaciones de uno a muchos para garantizar un rendimiento ágil y cálculos precisos mediante Medidas DAX.
 
-* **Base de Datos:** MySQL (Creación de esquema y generación de registros).
-* **ETL & Limpieza:** Power Query.
-* **Modelado y DAX:** Power BI.
-* **Visualización:** Power BI (Diseño en Modo Oscuro UI/UX corporativo).
+🛠️ Tecnologías y Herramientas Utilizadas
+Power BI Desktop: Modelado de datos, diseño de interfaz, formato condicional y desarrollo de medidas DAX avanzadas.
 
-## ⚙️ Fases del Desarrollo
+MySQL / Gestor de Bases de Datos: Almacenamiento, consulta y estructuración del conjunto de datos inicial (500+ registros).
 
-### 1. Extracción de Datos (MySQL)
+GitHub: Control de versiones, documentación y publicación del portafolio profesional.
 
-Se diseñó una base de datos relacional simulando un sistema de ticketing. Se generaron **515 registros** históricos de soporte técnico, capturando métricas clave como categorías de fallas, agentes asignados, fechas de apertura/cierre y el cumplimiento de los tiempos de resolución esperados.
+📈 Estructura del Tablero
+Vista General (Overview): Resumen ejecutivo con el volumen global de operaciones y los indicadores críticos de servicio.
 
-### 2. Transformación y Limpieza (Power Query)
+Desempeño de Agentes: Gráficos de barras interactivos con información detallada mediante información sobre herramientas (tooltips) flotantes para analizar la carga de trabajo individual.
 
-Al conectar Power BI con MySQL vía DirectQuery/Importación, se detectaron inconsistencias en los tipos de datos lógicos.
-
-* **Problema:** Los campos de cumplimiento (`sla_cumplido`, `fcr_cumplido`) fueron interpretados como texto booleano (Verdadero/Falso), impidiendo cálculos matemáticos en DAX.
-* **Solución:** Mediante Power Query y la Vista de Tabla, se forzó la conversión de estas columnas a **Número Entero** (1 para cumplimiento, 0 para incumplimiento), habilitando la capacidad de promediar las tasas de éxito.
-
-### 3. Modelado de Datos y Funciones DAX
-
-Se crearon medidas dinámicas para calcular los KPIs operativos centrales del negocio, independientes del filtrado visual:
-
-* **% SLA Cumplido:**
-  ```dax
-  % SLA Cumplido = AVERAGE('help_desk_analytics tickets'[sla_cumplido])
-  ```
-  *(Calcula la tasa de éxito de los tickets resueltos a tiempo basándose en el indicador booleano transformado).*
-
-* **MTTR (Mean Time to Resolve):**
-  ```dax
-  MTTR(Horas) = AVERAGE('help_desk_analytics tickets'[Horas_Resolucion])
-  ```
-  *(Promedia el tiempo de resolución en horas para medir la eficiencia del equipo).*
-
-### 4. Visualización de Datos (Power BI)
-
-Se implementó un diseño analítico con enfoque corporativo (Dark Mode), optimizando la relación señal-ruido mediante la eliminación de fondos blancos y bordes innecesarios.
-
-**Características Visuales Clave:**
-
-* **KPI Cards:** Tarjetas de diseño transparente para MTTR general y % SLA.
-* **Análisis Categórico:** Gráfico de anillo mostrando el volumen de los 515 tickets distribuidos por tipo de falla (Hardware, Software, Redes, etc.).
-* **Formato Condicional Inteligente:** Gráfico de columnas de SLA por agente con una línea de meta constante al 90% (0.9). Las barras cambian dinámicamente a **Rojo** si el rendimiento cae por debajo de la meta, o a **Azul** si la superan, permitiendo una identificación inmediata de problemas de rendimiento.
-* **Interactividad:** Segmentador de datos (Slicer) en estilo mosaico para filtrar todo el modelo por Nivel de Prioridad (Alta, Media, Baja, Crítica).
-
-## 💡 Conclusiones y Hallazgos (Insights)
-
-1. **Déficit de SLA:** Ninguno de los agentes alcanza la meta operativa del 90%. El rendimiento máximo registrado ronda el 74%.
-2. **Oportunidad de Mejora:** Al segmentar por prioridad "Crítica", las métricas se recalculan evidenciando áreas específicas donde el flujo de trabajo se estanca, lo que requeriría una revisión en la categorización de los tickets o en la carga de trabajo asignada a cada analista de soporte.
+Tendencias Temporales: Análisis de la apertura y cierre de tickets a lo largo del tiempo.
