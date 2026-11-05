@@ -22,4 +22,4 @@ Este proyecto consiste en un cuadro de mando analítico desarrollado en **Power 
 ## 🛠️ Instrucciones de Instalación y Uso
 1. **Clonar el repositorio:**
    ```bash
-  git clone https://github.com/tu-usuario/nombre-del-repositorio.git
+   git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/tu-usuario/nombre-del-repositorio.git)
